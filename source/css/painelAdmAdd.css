@@ -1,0 +1,108 @@
+/* Painel de Controle */
+
+.titulo-painel{
+	text-align: center;
+	font-family: 'Electrolize', sans-serif;
+	font-size: 200%;
+	font-weight: bold;
+
+	padding: 1% 0% 1% 0%;
+
+}
+
+.botao-voltar{
+	/* text-align: center; */
+	font-family: Helvetica, sans-serif;
+	border: none;
+	border-radius: 3px;
+    background: #181661;
+	color: white;
+
+	padding: 10px;
+}
+
+.botao-voltar:hover{
+	opacity: 0.9;
+}
+
+.col-voltar{
+	/* text-align: center; */
+	padding-left: 5%;
+}
+
+.foto-painel{
+	height: 15%;
+    width: auto;
+    border: 1px solid rgb(163, 163, 163);
+}
+
+.thead-painel{
+	text-align: center;
+	background: #181661;
+	color: white;
+}
+
+.tbody-painel{
+	text-align: center;
+	
+}
+
+.tabelaPainelAdm{
+	text-align: center;
+	margin: auto;
+    width: 80%;
+    margin-top: 3%;
+
+    font-size: 110%;
+    font-family: Helvetica, sans-serif;
+	
+}
+
+th, td {
+	border-bottom: 1px solid rgb(163, 163, 163);
+	
+	padding: 15px;
+
+	text-align: center;
+	margin: auto;
+	vertical-align: middle;
+}
+
+.input-upload{
+	display: none;
+}
+
+.label-upload{
+	font-family: Helvetica, sans-serif;
+	border: none;
+	border-radius: 3px;
+    background: #181661;
+	color: white;
+
+	padding: 10px;
+    
+    margin-top: 18px;
+}
+
+.label-upload:hover{
+	opacity: 0.9;
+}
+
+.botaoSalvar{
+	font-family: Helvetica, sans-serif;
+	border: none;
+	border-radius: 3px;
+    background: #181661;
+	color: white;
+
+	padding: 10px;
+    
+    margin-top: 10px;
+
+}
+.botaoSalvar:hover{
+	opacity: 0.8;
+}
+.botaoSalvar:focus{
+	outline: none;
+}

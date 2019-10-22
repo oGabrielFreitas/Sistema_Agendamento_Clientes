@@ -1,0 +1,286 @@
+/* .col{
+    border: 1px solid red;
+    
+}
+
+.row{
+    border: 1px dotted blue;
+}
+
+.container
+    border: 3px solid green;
+} */
+
+body{
+	overflow-x: hidden;
+}
+
+.navbar{
+	background: #181661;
+	color: black;
+}
+
+.nav-link:link{
+	color: white; 
+	font-family: 'Electrolize', sans-serif;
+	
+}
+.nav-link:active{
+	color: green;
+}
+.nav-link:hover{
+	color: grey;
+}
+.nav-link:visited{
+	text-decoration: none;
+	color: white;
+}
+
+
+.navbar-brand{
+	font-family: 'Oswald', sans-serif;
+	font-weight: 900;
+	font-size: 20px;
+}
+
+a:link {text-decoration:none; color:rgba(0,0,0,0.7);}
+a:visited {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:active {text-decoration: none}
+
+.fotos-home{
+	height: 200px;
+    width: auto;
+    border: 1px solid rgb(163, 163, 163);
+}
+
+.container-barra{
+	padding: 5%;
+	text-align: center;
+
+	font-family: 'Electrolize', sans-serif;
+	font-size: 2vw;
+	/* font-size-adjust: 2; */
+	font-weight: bold;		
+}
+
+hr{
+	border-color: black;
+	margin: 0% 8% 0% 8%;
+	opacity: 0.8;
+}
+.rodape{
+	margin: 2%;
+	text-align: center;
+	opacity: 0.8;
+}
+
+/* Página contato */
+
+.container-contato{
+
+	/* background-color: rgb(230, 230, 230);
+    border-radius: 10px; */
+    padding: 10%;
+    /* margin: 2% 5% 0% 5%; */
+    color: #1C2732;
+}
+
+.debug{
+	/* color:white;	 */
+	padding: 10%;
+	text-align: center;
+}
+
+/* Página Produto */
+
+.titulo-produto{
+	font-family: 'Electrolize', sans-serif;
+	/* text-align: center; */
+	padding: 2% 0% 2% 2%;
+	font-size: 220%;
+	font-weight: bold;
+}
+
+.fotoProdutoCol{
+	text-align: center;
+	padding: 2% 0% 0% 0%;
+}
+
+.fotoProdutoPage{
+	width: 100%;
+}
+
+.precoProdutoPage{
+	font-family: 'Electrolize', sans-serif;
+	font-size: 180%;
+	font-weight: bold;
+	color: midnightblue;
+
+	padding: 0% 0% 0% 2%;
+
+}
+
+.descricaoProdutoPage{
+	font-family: Helvetica, sans-serif;
+	padding: 5% 10% 0% 2%;
+	font-size: 120%;
+}
+
+.tamanhoProdutoPage{
+	font-family: Helvetica, sans-serif;
+	padding: 3% 0% 10% 2%;
+	font-size: 130%;
+}
+
+.botaoComprarPage{
+	font-family: 'Electrolize', sans-serif;
+	text-align: center;	
+	padding: 3% 10% 3% 10%;
+	margin: auto;
+	font-size: 120%;
+	font-weight: bold;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	background-color: rgb(180, 17, 17);
+
+}
+.botaoComprarPage:hover{
+	opacity: 0.8;
+}
+.botaoComprarPage:focus{
+	outline: none;
+}
+
+.classedeteste{
+	text-align: center;
+	color: blue;
+}
+
+/* Animation Timers
+---------------------------------*/
+.delay-02s { 
+	animation-delay: 0.2s; 
+	-webkit-animation-delay: 0.2s; 
+}
+.delay-03s { 
+	animation-delay: 0.3s; 
+	-webkit-animation-delay: 0.3s; 
+}
+.delay-04s { 
+	animation-delay: 0.4s; 
+	-webkit-animation-delay: 0.4s; 
+}
+
+.delay-05s { 
+	animation-delay: 0.5s; 
+	-webkit-animation-delay: 0.5s; 
+}
+.delay-06s { 
+	animation-delay: 0.6s; 
+	-webkit-animation-delay: 0.6s; 
+}
+
+.delay-07s { 
+	animation-delay: 0.7s; 
+	-webkit-animation-delay: 0.7s; 
+}
+.delay-08s { 
+	animation-delay: 0.8s; 
+	-webkit-animation-delay: 0.8s; 
+}
+
+.delay-09s { 
+	animation-delay: 0.9s; 
+	-webkit-animation-delay: 0.9s; 
+}
+.delay-1s { 
+	animation-delay: 1s; 
+	-webkit-animation-delay: 1s; 
+}
+.delay-12s { 
+	animation-delay: 1.2s; 
+	-webkit-animation-delay: 1.2s; 
+}
+
+/* Geovane */
+
+.QS{
+    font-family: 'Electrolize', sans-serif;
+    font-size:18px;/*modifica o tamanho da letra.*/
+    text-align:justify;/*centraliza o texo*//*valores left, center, right, justify*/
+    color:black;
+    font-family: 'Electrolize', sans-serif;
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+}
+
+h1{
+    text-align: center;
+    font-size: 45px;
+    color: black;
+    font-family: 'Electrolize', sans-serif;
+}
+
+.imga{
+    position: absolute;
+    top: 10%;
+    width: 90%;
+    height: 90%;
+    /* bottom 5%; */
+}
+
+.imglogo{
+	width: 40px;
+    height: 40px;
+}
+.roupaima{
+	width: 140%;
+	height: auto;
+}
+
+.titulo-produto2{
+	font-family: 'Electrolize', sans-serif;
+	/* text-align: center; */
+	padding: 1% 0% 0% 1%;
+	font-size: 145%;
+	font-weight: bold;
+}
+.precoProdutoPage2{
+	font-family: 'Electrolize', sans-serif;
+	font-size: 120%;
+	font-weight: bold;
+	color: midnightblue;
+
+	padding: 0% 0% 0% 1%;
+}
+.tamanhoProdutoPage2{
+	font-family: Helvetica, sans-serif;
+	padding: 2% 0% 10% 1%;
+	font-size: 80%;
+}
+
+.descricaoProdutoPage2{
+	font-family: Helvetica, sans-serif;
+	padding: 3% 7% 0% 1%;
+	font-size: 90%;
+}
+/*Personaliza o botão*/
+.bt{
+	border:1px solid rgb(90, 63, 243);
+	border-radius:4px;
+	display:inline-block;
+	cursor:pointer;
+	font-family:Verdana;
+	font-weight:bold;
+	font-size:13px;
+	padding:6px 10px;
+	text-decoration:none;
+	border-color:#03000e;
+	background:linear-gradient(to bottom, #abd5aa 5%, #180377  100%);
+	box-shadow:inset 0px 1px 0px 0px #e3f1e3;
+	color:#fff;
+	text-shadow:0px 1px 0px #528009;
+	}

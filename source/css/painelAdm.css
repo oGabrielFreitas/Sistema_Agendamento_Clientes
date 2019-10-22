@@ -1,0 +1,139 @@
+/* Painel de Controle */
+
+.titulo-painel{
+	text-align: center;
+	font-family: 'Electrolize', sans-serif;
+	font-size: 200%;
+	font-weight: bold;
+
+	padding: 1% 0% 1% 0%;
+
+}
+
+.botao-registrar-novo{
+	text-align: center;
+	font-family: Helvetica, sans-serif;
+	border: none;
+	border-radius: 3px;
+    background: #181661;
+	color: white;
+
+	padding: 10px;
+}
+
+.botao-registrar-novo:hover{
+	opacity: 0.9;
+}
+
+.col-registrar{
+	text-align: center;
+}
+
+.foto-painel{
+	height: 160px;
+    width: auto;
+    border: 1px solid rgb(163, 163, 163);
+}
+
+.thead-painel{
+	text-align: center;
+	background: #181661;
+	color: white;
+}
+
+.tbody-painel{
+	text-align: center;
+	
+}
+
+.tabelaPainelAdm{
+	text-align: center;
+	margin: auto;
+    width: 80%;
+    margin-top: 1%;
+
+    font-size: 110%;
+    font-family: Helvetica, sans-serif;
+	
+}
+
+th, td {
+	border-bottom: 1px solid rgb(163, 163, 163);
+	
+	padding: 15px;
+
+	text-align: center;
+	margin: auto;
+	vertical-align: middle;
+}
+/* tr:nth-child(even) {background-color: #f2f2f2;} */
+
+.botaoAlterar{
+	font-family: Helvetica, sans-serif;
+	border: none;
+	border-radius: 3px;
+    background: #181661;
+	color: white;
+
+	padding: 10px;
+
+}
+.botaoAlterar:hover{
+	opacity: 0.8;
+}
+.botaoAlterar:focus{
+	outline: none;
+}
+
+.botaoApagar{
+	font-family: Helvetica, sans-serif;
+	color: black;
+	border: none;
+	border-radius: 3px;
+	background-color:  rgb(199, 78, 78);
+	
+	padding: 10px;
+    
+    margin-top: 10px;
+
+}
+.botaoApagar:hover{
+	opacity: 0.8;
+}
+.botaoApagar:focus{
+	outline: none;
+}
+
+.botaoSalvar{
+	font-family: Helvetica, sans-serif;
+	color: black;
+	border: none;
+	border-radius: 3px;
+	background-color:  rgb(147, 211, 216);
+	
+	padding: 10px;
+    
+    margin-top: 10px;
+
+}
+.botaoSalvar:hover{
+	opacity: 0.8;
+}
+.botaoSalvar:focus{
+	outline: none;
+}
+
+.input-adm{
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 150%;
+}
+
+.textarea-adm{
+    border: none;
+	outline: none;
+	padding-left: 6%;
+	resize: none;
+    
+}
