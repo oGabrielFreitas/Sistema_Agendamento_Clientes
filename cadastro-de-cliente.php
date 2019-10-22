@@ -2,10 +2,10 @@
 
     include_once('source/php/script/CrudBanco.php');
 
-    include("source/html/navbar.html");
+//    include("source/html/navbar.html");
 
 
-    $CRUD = new CrudBanco('banco_minhaloja');
+    $CRUD = new CrudBanco();
     
 
 ?>
@@ -50,32 +50,28 @@
             <table class="tabelaPainelAdm" id="tabelaAdm">
                 <thead class="thead-painel">
                     <tr>
-                        <th>#</th>
                         <th>Nome</th>
-                        <th style="width: 12%;">Valor</th>
-                        <th>Descrição</th>
-                        <th>Tamanho</th>
-                        <th>Foto</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>Endereço</th>
+                        <th>Comentário</th>
                         <th></th>
                         <!--  -->
                     </tr>
                 </thead>
                 <tbody class="tbody-painel">
                     <tr>
-                        <form action="source/php/script/insere-produto.php" method="POST" enctype="multipart/form-data">
-                        <td class="data0"> </td>
+                        <form action="source/php/script/create-client.php" method="POST" enctype="multipart/form-data">
 
-                        <td id="campoNome">         <textarea name="tipo" type="text" class="data0 textarea-adm" rows="1" cols="20"></textarea></td>
+                        <td id="campoNome">         <input name="nome" type="text" class="data0 input-adm" placeholder="Nome*"></textarea></td>
 
-                        <td id="campoValor">        <input name="valor" type="text" class="data0 input-adm" value=""></td>
+                        <td id="campoTelefone">     <input name="telefone" type="text" class="data0 input-adm" placeholder="Telefone"></td>
 
-                        <td id="campoDescricao">    <textarea name="descricao" type="text" class="data0 textarea-adm" rows="3" cols="30"> </textarea></td>
+                        <td id="campoEmail">        <input name="email" type="text" class="data0 input-adm" placeholder="E-mail"> </td>
 
-                        <td id="campoTamanho">      <input name="tamanho" type="text" class="data0 input-adm" value=""> </td>
+                        <td id="campoEndereco">     <input name="endereco" type="text" class="data0 input-adm" placeholder="Endereço"></td>
 
-                        <td id="campoUpload">   
-                                                    <label for="upload-arquivo" class="label-upload">Upload</label>                            
-                                                    <input class="input-upload" name="foto_produto" type="file" id="upload-arquivo">  </td>
+                        <td id="campoDescricao">    <textarea name="comentario" type="text" class="data0 textarea-adm" rows="3" cols="30"> </textarea></td>                        
 
                         <td><input class="data0 botaoSalvar" type="submit" value="Salvar" onclick="clicaCriar(0)" ></td>
                         </form>

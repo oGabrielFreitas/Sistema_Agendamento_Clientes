@@ -5,7 +5,7 @@
    // include("source/html/navbar.html");
 
 
-    $CRUD = new CrudBanco('banco_minhaloja');
+    $CRUD = new CrudBanco();
 
     $data = $CRUD->read();
 
