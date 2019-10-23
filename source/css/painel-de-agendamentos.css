@@ -1,0 +1,25 @@
+.col-table{
+    text-align: center;
+    margin: auto;
+}
+
+.main-table{
+    text-align: center;
+    margin: auto;
+    /* border: 1px solid  black; */
+    /* border-right-color: black; */
+}
+
+/* table{
+    border: 1px solid black;
+} */
+
+th{
+    border: 1px solid green;
+    padding: 20px;
+}
+
+td{
+    border: 1px solid blue;
+}
+

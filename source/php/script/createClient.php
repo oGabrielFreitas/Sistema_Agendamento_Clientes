@@ -18,5 +18,5 @@
    
     echo "susexo";
 
-    //header('Location:../../../registrar-produto.php');
+    header('Location:../../../cadastro-de-cliente.php');
 ?>

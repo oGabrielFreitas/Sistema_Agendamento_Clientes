@@ -7,7 +7,7 @@
 
     $CRUD = new CrudBanco();
 
-    $data = $CRUD->read();
+    $data = $CRUD->read('cliente');
 
     
 
@@ -43,7 +43,7 @@
 
     <div class="row">
         <div class="col-md-4 col-registrar">
-        <a href="registrar-produto.php"><input class="botao-registrar-novo" type="button" value="Registrar Novo Produto"></a>
+        <a href="cadastro-de-cliente.php"><input class="botao-registrar-novo" type="button" value="Cadastrar Cliente"></a>
             
         </div>
     </div>

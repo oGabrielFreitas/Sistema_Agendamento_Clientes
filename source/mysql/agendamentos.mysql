@@ -1,0 +1,16 @@
+USE banco_sisagendamento;
+
+CREATE TABLE agendamentos(
+
+ 	id INT AUTO_INCREMENT,
+ 	id_cliente VARCHAR (100),
+    nome VARCHAR (100),
+    data DATE,
+    valor VARCHAR (50),
+ 	servico VARCHAR (500),
+ 	PRIMARY KEY (id)
+
+);
+
+-- -- $nome,$telefone,$email,$endereço,$n_vezes,$comentario
+

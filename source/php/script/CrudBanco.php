@@ -87,20 +87,20 @@ class CrudBanco{
   }
 
     //Função para criar agendamento (scheduling)
-    public function create_scheduling($tipo,$valor,$descricao,$tamanho,$imagem){
+    public function createScheduling($id_cliente,$data_ser,$valor,$servico){
         
         try {  
 
             //Prepara o array;
-            $array = array(':tipo' => $tipo,
+            $array = array(':id_cliente' => $id_cliente,
+            ':data_ser' => $data_ser,
             ':valor' => $valor,
-            ':descricao' => $descricao,
-            ':tamanho' => $tamanho,
-            ':imagem' => $imagem);
+            ':servico' => $servico);
 
             //Prepara o SQL
-            $sql = 'INSERT INTO roupas(tipo,valor,descricao,tamanho,imagem) VALUES(:tipo,:valor,:descricao,:tamanho,:imagem)';
+            $sql = 'INSERT INTO roupas(id_cliente,data_ser,valor,servico) VALUES(:id_cliente,:data_ser,:valor,:servico)';
 
+            //Prepara e Executa SQL
             $create = $this->con -> prepare($sql);
             $create -> execute($array);
 
@@ -111,6 +111,7 @@ class CrudBanco{
 
     }
 
+    //Função para ler todos os dados de qualquer tabela
     public function read($table){
 
         try{
