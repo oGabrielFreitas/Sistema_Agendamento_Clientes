@@ -74,7 +74,7 @@ class CrudBanco{
 
           //Prepara o SQL
           $sql = 'UPDATE roupas SET nome = :nome, telefone = :telefone, email = :email, 
-                  ultimo_agendamento = :ultimo_agendamento, n_vezes = :n_vezes, comentario = :comentario WHERE id_roupa = :id';
+                  ultimo_agendamento = :ultimo_agendamento, n_vezes = :n_vezes, comentario = :comentario WHERE id = :id';
 
           //Prepara e Executa SQL
           $create = $this->con -> prepare($sql);
@@ -87,18 +87,19 @@ class CrudBanco{
   }
 
     //Função para criar agendamento (scheduling)
-    public function createScheduling($id_cliente,$data_ser,$valor,$servico){
+    public function createScheduling($id_cliente,$nome,$data_ser,$valor,$servico){
         
         try {  
 
             //Prepara o array;
             $array = array(':id_cliente' => $id_cliente,
+            ':nome' => $nome,
             ':data_ser' => $data_ser,
             ':valor' => $valor,
             ':servico' => $servico);
 
             //Prepara o SQL
-            $sql = 'INSERT INTO roupas(id_cliente,data_ser,valor,servico) VALUES(:id_cliente,:data_ser,:valor,:servico)';
+            $sql = 'INSERT INTO agendamentos(id_cliente,nome,data_ser,valor,servico) VALUES(:id_cliente,:nome,:data_ser,:valor,:servico)';
 
             //Prepara e Executa SQL
             $create = $this->con -> prepare($sql);
@@ -120,6 +121,8 @@ class CrudBanco{
         $read->execute();
 
         $data = $read->fetchAll(PDO::FETCH_ASSOC);
+
+        $read->closeCursor();
         
         return $data;
 
@@ -129,6 +132,28 @@ class CrudBanco{
         }
 
     }
+
+    //Função para ler dados de tabela pelo id
+    public function readById($table,$id){
+
+        try{
+
+        $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
+
+        $read = $this->con -> prepare($sql);
+        $read->execute();
+
+        $data = $read->fetch(PDO::FETCH_ASSOC);
+        
+        return $data;
+
+        } catch(PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return;
+        }
+
+    }
+
 
     public function update($id,$tipo,$valor,$descricao,$tamanho,$imagem){
         
