@@ -9,15 +9,15 @@ class CrudBanco{
     private $port = '3306';
     private $table = '';
 
-    private $con; // Connection itself
+    private $Con; // Connection itself
   
 
-    function __construct(){
+    function __Construct(){
 
         try {
-            $this->con = new PDO("mysql:host=".$this->address.";dbname=".$this->dbname."", $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
-            $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // $this->con -> exec ('set names utf8');                                    
+            $this->Con = new PDO("mysql:host=".$this->address.";dbname=".$this->dbname."", $this->username, $this->password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+            $this->Con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // $this->Con -> exec ('set names utf8');                                    
                
  
           } catch(PDOException $e) {
@@ -26,8 +26,8 @@ class CrudBanco{
     }
 
     function __destruct(){
-        // mysqli_close($this->con);
-        unset($this->con);
+        // mysqli_close($this->Con);
+        unset($this->Con);
 
     }
     
@@ -48,8 +48,11 @@ class CrudBanco{
                             VALUES(:nome,:telefone,:email,:endereco,:comentario)';
 
         //Prepara e Executa SQL
-        $create = $this->con -> prepare($sql);
+        $create = $this->Con -> prepare($sql);
         $create -> execute($array);
+
+        //Retorna o id do último cliente inserido
+        return $this->Con->lastInsertId();
 
       } catch(PDOException $e) {
         echo 'Error: ' . $e->getMessage();
@@ -57,34 +60,6 @@ class CrudBanco{
 
 
     }
-
-    //Função para atualizar cliente
-    public function updateCliente($nome,$telefone,$email,$endereço,$ultimo_agendamento,$n_vezes,$comentario){
-        
-      try {  
-
-          //Cria o array para inserir valores
-          $array = array(':nome' => $nome,
-          ':telefone' => $telefone,
-          ':email' => $email,
-          ':endereco' => $endereco,
-          ':ultimo_agendamento' => $ultimo_agendamento,
-          ':n_vezes' => $n_vezes,
-          ':comentario' => $comentario);
-
-          //Prepara o SQL
-          $sql = 'UPDATE roupas SET nome = :nome, telefone = :telefone, email = :email, 
-                  ultimo_agendamento = :ultimo_agendamento, n_vezes = :n_vezes, comentario = :comentario WHERE id = :id';
-
-          //Prepara e Executa SQL
-          $create = $this->con -> prepare($sql);
-          $create -> execute($array);
-
-        } catch(PDOException $e) {
-          echo 'Error: ' . $e->getMessage();
-        }
-
-  }
 
     //Função para criar agendamento (scheduling)
     public function createScheduling($id_cliente,$nome,$data_ser,$valor,$servico){
@@ -102,8 +77,10 @@ class CrudBanco{
             $sql = 'INSERT INTO agendamentos(id_cliente,nome,data_ser,valor,servico) VALUES(:id_cliente,:nome,:data_ser,:valor,:servico)';
 
             //Prepara e Executa SQL
-            $create = $this->con -> prepare($sql);
+            $create = $this->Con -> prepare($sql);
             $create -> execute($array);
+
+            return $this->Con->lastInsertId();
 
           } catch(PDOException $e) {
             echo 'Error: ' . $e->getMessage();
@@ -117,7 +94,7 @@ class CrudBanco{
 
         try{
 
-        $read = $this->con -> prepare("SELECT * FROM ".$table."");
+        $read = $this->Con -> prepare("SELECT * FROM ".$table."");
         $read->execute();
 
         $data = $read->fetchAll(PDO::FETCH_ASSOC);
@@ -140,7 +117,7 @@ class CrudBanco{
 
         $sql = "SELECT * FROM ".$table." WHERE id = ".$id."";
 
-        $read = $this->con -> prepare($sql);
+        $read = $this->Con -> prepare($sql);
         $read->execute();
 
         $data = $read->fetch(PDO::FETCH_ASSOC);
@@ -154,39 +131,64 @@ class CrudBanco{
 
     }
 
-
-    public function update($id,$tipo,$valor,$descricao,$tamanho,$imagem){
-        
+    //Função para atualizar cliente
+    public function updateClient($id, $nome,$telefone,$email,$endereco,$ultimo_agendamento,$n_vezes,$comentario){
+          
       try {  
 
-          //Prepara o array;
-          $array = array('id' => $id,
-          ':tipo' => $tipo,
-          ':valor' => $valor,
-          ':descricao' => $descricao,
-          ':tamanho' => $tamanho,
-          ':imagem' => $imagem);
+          //Cria o array para inserir valores
+          $array = array(':id' => $id,
+          ':nome' => $nome,
+          ':telefone' => $telefone,
+          ':email' => $email,
+          ':endereco' => $endereco,
+          ':ultimo_agendamento' => $ultimo_agendamento,
+          ':n_vezes' => $n_vezes,
+          ':comentario' => $comentario);
 
           //Prepara o SQL
-          $sql = 'UPDATE roupas SET tipo = :tipo, valor = :valor, descricao = :descricao, tamanho = :tamanho, imagem = :imagem WHERE id_roupa = :id';
+          $sql = 'UPDATE cliente SET nome = :nome, telefone = :telefone, email = :email, endereco = :endereco,
+                  ultimo_agendamento = :ultimo_agendamento, n_vezes = :n_vezes, comentario = :comentario WHERE id = :id';
 
-          $create = $this->con -> prepare($sql);
+          //Prepara e Executa SQL
+          $create = $this->Con -> prepare($sql);
           $create -> execute($array);
 
         } catch(PDOException $e) {
-          echo 'Error: ' . $e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
 
-  }
+    }
+    
+    //Update client last scheduling infos
+    public function updateClientLastTime($id, $ultimo_agendamento){
 
-    public function delete($id){
+      try{
+
+        $al_reg = $this->readById('cliente',$id); // al_red = already_registered
+  
+        //Rewrites client, changing last_agendamento and n_vezes
+        $this->updateClient($id, $al_reg['nome'],$al_reg['telefone'],$al_reg['email'],$al_reg['endereco'],
+                              $ultimo_agendamento ,$al_reg['n_vezes'] + 1,$al_reg['comentario']);
+
+        return $al_reg; //Returns already_registered client if successful
+
+      } catch(Excepction $e){
+          echo 'Error: ' . $e->getMessage();
+          return -1; //Return -1 if unsuccessful
+      }
+
+
+    }
+
+    public function deleteClient($id){
 
       try {  
 
         //Prepara o SQL
-        $sql = 'DELETE FROM roupas WHERE id_roupa = :id';
+        $sql = 'DELETE FROM cliente WHERE id_roupa = :id';
 
-        $create = $this->con -> prepare($sql);
+        $create = $this->Con -> prepare($sql);
         $create->bindParam(':id',$id);
         $create -> execute();
 

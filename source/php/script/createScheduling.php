@@ -22,7 +22,7 @@
     //Verify by client phone number, if he's already registered
     foreach($clientes as $cliente):
 
-        //Save how many, and witch phone numbers are already registered
+        //Save how many, and witch phone numbers are already registered by client id
         if($cliente['telefone'] == $telefone){
             array_push($array_equals, $cliente['id']);
             $equals++;            
@@ -35,28 +35,26 @@
     // (Two or more equals custumers NOT implemented)
     if($equals > 0){
 
-        $al_reg = $CRUD->readById('cliente',$array_equals[0]); // al_red = already_registered
+        //Update client last scheduling infos
+        $al_reg = $CRUD->updateClientLastTime($array_equals[0], $data_ser);
 
         //Create a new scheduling based in already registered client datas (id, name)
-        $CRUD->createScheduling($al_reg['id'],$al_reg['nome'],$data_ser,$valor,$servico);
+        $CRUD->createScheduling($al_reg['id'], $al_reg['nome'], $data_ser, $valor, $servico);
 
         echo "equals";
 
     }
     else{
+        //If there isn't a client with the same phone number, create a new client register
 
-        //NOT implemented yet
+        //$CRUD -> createClient($nome,$telefone,$email,$endereco,$comentario);
+        $last_id = $CRUD->createClient($nome,$telefone,'','','');
 
-        $CRUD->createScheduling(-1,$nome,$data_ser,$valor,$servico);
+        $CRUD->createScheduling($last_id, $nome, $data_ser, $valor, $servico);
 
         echo "different";
 
-    }
-    
-    
-    
-    
-    
+    }    
 
 
     /*

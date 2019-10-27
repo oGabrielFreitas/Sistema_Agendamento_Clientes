@@ -13,10 +13,13 @@
   //  move_uploaded_file($_FILES['foto_produto']['tmp_name'],"../../../".$caminho_imagem);
     
     $CRUD = new CrudBanco();
-    $CRUD -> createClient($nome,$telefone,$email,$endereco,$comentario);
+    $idret = $CRUD -> createClient($nome,$telefone,$email,$endereco,$comentario);
 
    
-    echo "susexo";
+    // echo "susexo";
+    // echo $idret;
+
+
 
     header('Location:../../../cadastro-de-cliente.php');
 ?>
